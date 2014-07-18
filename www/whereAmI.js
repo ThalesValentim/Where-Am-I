@@ -21,9 +21,9 @@
 	var factory = require('com.thalesvalentim.phonegap.plugin.whereAmI.BackgroundService')
    
    	if (!cordova.plugins) cordova.plugins = {};
-   	if (!cordova.plugins.MyService) cordova.plugins.MyService = factory.create(serviceName);
+   	if (!cordova.plugins.myService) cordova.plugins.myService = factory.create(serviceName);
    	
-   	module.exports = cordova.plugins.MyService; 
+   	module.exports = cordova.plugins.myService; 
 
 
 
