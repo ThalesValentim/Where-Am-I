@@ -41,7 +41,12 @@
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         </config-file>
         
-        <source-file src="src/android" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/MyService.java" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/MyServiceActivity.java" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/exceptions" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/interfaces" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/logic" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
+        <source-file src="src/android/models" target-dir="src/com/thalesvalentim/phonegap/plugin/whereAmI/sample" />
     </platform>
 	
 </plugin>
