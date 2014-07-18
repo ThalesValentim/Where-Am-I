@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.logic;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.net.URL;
 
 import org.apache.http.client.ClientProtocolException;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServerModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServerModel;
 
 import android.util.Log;
 

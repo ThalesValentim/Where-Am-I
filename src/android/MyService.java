@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,14 +26,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 
-import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.exceptions.NotYetImplementedException;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces.IConfig;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.Controller;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.HTTPMethod;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.ResultFactory;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.LocationModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServiceConfig;
+import com.thalesvalentim.phonegap.plugin.whereAmI.BackgroundService;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.exceptions.NotYetImplementedException;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces.IConfig;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.Controller;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.HTTPMethod;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.ResultFactory;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.LocationModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServiceConfig;
 
 public class MyService extends BackgroundService implements Controller.IControllerListener {
 

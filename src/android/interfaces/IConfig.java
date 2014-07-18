@@ -1,8 +1,8 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces;
 
 import java.util.Map;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.HTTPMethod;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.HTTPMethod;
 
 public interface IConfig {
 	public HTTPMethod getMethod();

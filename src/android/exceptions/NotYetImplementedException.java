@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.exceptions;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.exceptions;
 
 public class NotYetImplementedException extends Exception {
 

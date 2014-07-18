@@ -1,10 +1,10 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.models;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.models;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.TransportStrategy;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.TransportStrategy;
 
 public class LocationModel implements TransportStrategy.ITransportData {
 

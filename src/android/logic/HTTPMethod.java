@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.logic;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic;
 
 public enum HTTPMethod {
 	POST,

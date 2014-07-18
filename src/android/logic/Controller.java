@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.logic;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -10,11 +10,11 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.util.Log;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces.IConfig;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.LocationModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServerModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.UploadModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.MyServiceActivity;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces.IConfig;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.LocationModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServerModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.UploadModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.MyServiceActivity;
 
 public class Controller {
 

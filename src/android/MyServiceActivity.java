@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample;
 
 
 import org.apache.cordova.*;

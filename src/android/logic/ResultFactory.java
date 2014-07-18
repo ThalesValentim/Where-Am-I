@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.logic;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.LocationModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServerModel;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.UploadModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.LocationModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServerModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.UploadModel;
 
 public class ResultFactory {
 	

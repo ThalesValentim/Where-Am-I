@@ -1,6 +1,6 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServerModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServerModel;
 
 public interface IServerListener {
 	

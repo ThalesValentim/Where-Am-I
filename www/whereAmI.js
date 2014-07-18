@@ -16,14 +16,14 @@
 
 
 
-	var serviceName = 'com.red_folder.phonegap.plugin.backgroundservice.GPSService';
+	var serviceName = 'com.thalesvalentim.phonegap.plugin.whereAmI.sample.MyService';
 
-	var factory = require('com.red_folder.phonegap.plugin.backgroundservice.BackgroundService')
+	var factory = require('om.thalesvalentim.phonegap.plugin.whereAmI.BackgroundService')
    
    	if (!cordova.plugins) cordova.plugins = {};
-   	if (!cordova.plugins.GPSService) cordova.plugins.GPSService = factory.create(serviceName);
+   	if (!cordova.plugins.MyService) cordova.plugins.MyService = factory.create(serviceName);
    	
-   	module.exports = cordova.plugins.GPSService; 
+   	module.exports = cordova.plugins.MyService; 
 
 
 

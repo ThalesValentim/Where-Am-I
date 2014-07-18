@@ -1,9 +1,9 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.models;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.models;
 
 import java.util.Map;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces.IConfig;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.HTTPMethod;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces.IConfig;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.HTTPMethod;
 
 public class ServiceConfig implements IConfig{
 

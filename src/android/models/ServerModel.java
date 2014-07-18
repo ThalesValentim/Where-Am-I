@@ -1,4 +1,4 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.models;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.models;
 
 import android.util.Log;
 

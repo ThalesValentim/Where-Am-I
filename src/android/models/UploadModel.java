@@ -1,11 +1,11 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.models;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.models;
 
 import java.util.Map;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.exceptions.NotYetImplementedException;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.interfaces.IConfig;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.TransportStrategy;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.logic.UploadHelper;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.exceptions.NotYetImplementedException;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.interfaces.IConfig;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.TransportStrategy;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic.UploadHelper;
 
 public class UploadModel implements UploadHelper.IUploadModel, TransportStrategy.ITransportData {
 

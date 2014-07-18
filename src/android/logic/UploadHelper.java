@@ -1,7 +1,7 @@
-package com.red_folder.phonegap.plugin.backgroundservice.sample.logic;
+package com.thalesvalentim.phonegap.plugin.whereAmI.sample.logic;
 
-import com.red_folder.phonegap.plugin.backgroundservice.sample.exceptions.NotYetImplementedException;
-import com.red_folder.phonegap.plugin.backgroundservice.sample.models.ServerModel;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.exceptions.NotYetImplementedException;
+import com.thalesvalentim.phonegap.plugin.whereAmI.sample.models.ServerModel;
 
 import android.util.Log;
 
