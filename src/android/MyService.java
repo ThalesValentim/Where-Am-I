@@ -127,7 +127,7 @@ public class MyService extends BackgroundService implements Controller.IControll
 	
 	private void initialiseController() {
 		this.mController = new Controller(this, this, this.getServiceConfig());
-		
+		this.mController.clearLastLocation();
 		this.mController.start();
 	}
 	
