@@ -18,7 +18,7 @@
 
 	var serviceName = 'com.thalesvalentim.phonegap.plugin.whereAmI.sample.MyService';
 
-	var factory = require('om.thalesvalentim.phonegap.plugin.whereAmI.BackgroundService')
+	var factory = require('com.thalesvalentim.phonegap.plugin.whereAmI.BackgroundService')
    
    	if (!cordova.plugins) cordova.plugins = {};
    	if (!cordova.plugins.MyService) cordova.plugins.MyService = factory.create(serviceName);
