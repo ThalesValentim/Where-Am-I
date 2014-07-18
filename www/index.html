@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>GPS APP</title>
+		
+		<style>
+			.hidden {
+				display: none;
+			}
+			
+			p {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+			html, body{
+				height:100%;
+			}
+			#loading {
+				z-index: 3;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				
+			}
+			#loadingImage {
+				display:none;
+				background-image:url('img/transparent-loading.gif');
+				width:100px;
+				height: 100px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				background:url(img/transparent-loading.gif) no-repeat center #fff;
+				text-align:center;
+				padding:10px;
+				font:normal 16px Tahoma, Geneva, sans-serif;
+				margin-left: -50px;
+				margin-top: -50px;
+				z-index:2;
+				overflow: auto;
+				font-weight:bold;
+				
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--<h1>Onde eu estou?</h1>-->
+		<div id="homeContent" style="display:none;">
+			<div id="intervalo">
+				<label>Intervalo de atualização:</label><br />
+				<input id='time' type="number" placeholder='300'> Segundos<br />
+			</div>
+			<div>
+				
+				<input id='Start' type=button onclick='start();' value='Iniciar Posicionamento'>
+				<input id='Stop' type=button onclick='stop();' value='Parar Posicionamento'> 
+			</div>
+
+			<div id="status" style="display:none">
+				<h1>Status:</h1>
+				<div id='Message'></div>
+			</div>
+		</div>
+		<div id="cadastroContent" style="display:none; width:200px;">
+				<form name="cadastro" id="cadastro">
+					<label for="nome">Nome</label>
+					<input type="text" id="nome"  name="Nome" placeholder="Fulano de Tal" /><br />
+					<label for="senha">Senha</label>
+					<input type="password" placeholder="******" id="senha"  name="Senha" />
+					<input type="hidden" id="device"  name="device" />
+					<div id="submit_buttons" style="text-align:center; margin-top:20px;">
+						<button type="submit">Enviar</button>
+					</div>
+				</form>
+		</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+        
+
+
+        <script type="text/javascript" >
+   			var gpsService;
+        	var btnStart = document.getElementById("Start");
+        	var btnStop = document.getElementById('Stop');
+        	var txtMessage = $('#Message');
+        	var checkInterval = null;
+			var timeToSendPosition = null;
+			var ajaxUserIdURL = 'http://thalesvalentim.com.br/webserver/gps/getUser.php';
+			var ajaxCadastroURL = 'http://thalesvalentim.com.br/webserver/gps/registerUser.php';
+			var deviceIDForm = $('#device');
+			var nomeDeUsuario = $('#nome').val();
+			var senha = $('#senha').val();
+
+   			document.addEventListener('deviceready', function() {
+        		btnStart = document.getElementById("Start");
+        		btnStop = document.getElementById('Stop');
+        		txtMessage = $('#Message');
+				homeContent = $('#homeContent');
+				cadastroContent = $('#cadastroContent');
+        		checkInterval = null;
+   				var deviceID = device.uuid;
+				deviceIDForm.val(deviceID);
+				
+				$('#cadastro').on('submit', function(){
+					deviceIDForm = $('#device');
+					nomeDeUsuario = $('#nome').val();
+					senha = $('#senha').val();
+					if(nomeDeUsuario == '' || senha == ''){
+						
+						navigator.notification.alert(
+							'Favor preencher corretamente o campo nome/senha!',
+							function() {
+								return false;
+							},
+							'Posicionamento GPS',
+							'Ok'
+						);	
+						return false;
+					}
+						
+					$.ajax({
+						 type: "GET",
+						 url: ajaxCadastroURL,
+						 data: {userid: deviceIDForm.val(), username: nomeDeUsuario, password: senha},
+						 timeout: 48000,
+						 success:  function(data) {
+							console.log(data);
+							if(data == "Sucesso"){
+								navigator.notification.alert(
+									'Cadastrado com sucesso!',
+									function() {
+										cadastroContent.hide();
+										homeContent.show();
+										gpsService = cordova.plugins.myService;
+										getStatus();
+										return true;
+									},
+									'Posicionamento GPS',
+									'Ok'
+								);
+							return false;
+							}else{
+								navigator.notification.alert(
+									'Falha no cadastro! Tente novamente mais tarde.',
+									function() {
+										return false;
+									},
+									'Posicionamento GPS',
+									'Ok'
+								);	
+								return false;
+								
+							}
+							return false;
+						},
+						error: function(request, errorType, errorMessage) {
+							console.log('request: '+ request + ' ERROR Type: ' + errorType + ' error: ' + errorMessage);
+							print(request);
+							return false;
+						},
+						dataType: "html"
+					});
+					return false;
+				});
+			
+				$.ajax({
+					 type: "GET",
+					 url: ajaxUserIdURL,
+					 data: {userid: deviceID},
+					 timeout: 48000,
+					 success:  function(data) {
+						console.log(data);
+						if(data != "Sucesso"){
+							navigator.notification.alert(
+								'Não encontramos um usuário para seu aparelho, para continuar será necessário realizar um cadastro.',
+								function() {
+									cadastroContent.show();
+									return true;
+								},
+								'Posicionamento GPS',
+								'Ok'
+							);	
+						}else{
+							gpsService = cordova.plugins.myService;
+							getStatus();
+							
+						}
+					},
+					error: function(request, errorType, errorMessage) {
+						console.log('error: ' + errorMessage);
+					},
+					dataType: "html"
+				});
+
+   			}, true);
+			
+			
+		
+   			  
+
+			/*
+			 * Helper functions
+			 */
+			function hide(item) {
+				item.className = 'hidden';
+			}
+			
+			function unhide(item) {
+				item.className = '';
+			}
+
+ 			function handleSuccess(data) {
+ 				// alert(JSON.stringify(data));
+ 				updateView(data);
+ 			}
+ 			
+ 			function handleError(data) {
+				alert("Error: " + data.ErrorMessage);
+ 				alert(JSON.stringify(data));
+				updateView(data);
+ 			}
+ 			
+ 			function getStatus() {
+				homeContent.show();
+ 				gpsService.getStatus(	function(r){handleSuccess(r)},
+ 										function(e){handleError(e)});
+ 			}
+
+			/*
+			 * Button logic
+			 */
+			function start() {
+				timeToSendPosition = $('#time').val();
+				if(timeToSendPosition != ''){
+					if(timeToSendPosition < 30){
+						navigator.notification.alert(
+							'O intervalo mínimo é de 30 segundos!',
+							function() {
+								return false;
+							},
+							'Posicionamento GPS',
+							'Ok'
+						);
+						return false;
+					}
+					cadastroContent.hide();
+					homeContent.show();
+					$('#status').show();
+					txtMessage.html('Serviço iniciado');
+					$('#intervalo').hide();
+					gpsService.startService(	function(r){
+													gpsService.enableTimer(	timeToSendPosition * 1000,
+																			function(r){handleSuccess(r)},
+																			function(e){handleError(e)});
+												},
+												function(e){handleError(e)});
+				}else{
+					navigator.notification.alert(
+						'Digite um intervalo de tempo para atualizar a sua posição!',
+						function() {
+							return false;
+						},
+						'Posicionamento GPS',
+						'Ok'
+					);
+				}
+			}
+
+			function stop() {
+				$('#intervalo').show();
+				txtMessage.html('Serviço parado');
+				gpsService.disableTimer(	function(r){
+												gpsService.stopService(	function(r){handleSuccess(r)},
+																		function(e){handleError(e)});
+												},
+												function(e){handleError(e)});
+			}
+
+			/*
+			 * View logic
+			 */
+ 			function updateView(data) {
+ 				
+ 				if (data.ServiceRunning) {
+					unhide(btnStop);
+					hide(btnStart);
+					
+					if (checkInterval == null)
+						checkInterval = window.setInterval(function() {getStatus();},3000);
+						
+ 				} else {
+					unhide(btnStart);
+					hide(btnStop);
+
+					window.clearInterval(checkInterval);
+					checkInterval = null;
+ 				}
+ 				
+ 				var message = '';
+ 				message += '<h3>Location</h3>'
+ 				if (data.LatestResult == null) {
+ 					message += 'No results available';
+ 				} else {
+ 				
+					if (data.LatestResult.Uploaded) {
+						message += '<p>Uploaded</p>';
+					} else {
+						message += '<p>Not uploaded</p>';
+					}
+ 					
+					message += '<p>' + data.LatestResult.Message + '</p>';
+				
+					message +=	'<p>Longitude: ' + data.LatestResult.Longitude + '</p>' + 
+								'<p>Latitude: ' + data.LatestResult.Latitude + '</p>' +
+								'<p>Accuracy: ' + data.LatestResult.Accuracy + '</p>' +
+								'<p>Altitude: ' + data.LatestResult.Altitude + '</p>' +
+								'<p>Altitude Accuracy: ' + data.LatestResult.AltitudeAccuracy + '</p>' +
+								'<p>Heading: ' + data.LatestResult.Heading + '</p>' +
+								'<p>Speed: ' + data.LatestResult.Speed + '</p>' +
+								'<p>Timestamp: ' + data.LatestResult.Timestamp + '</p>' +
+								'<hr/>';
+
+					if (data.LatestResult.ServerResponse != undefined) {
+						message += 	'<p>ServerResponse.Success: ' + data.LatestResult.ServerResponse.Success + '</p>' +
+									'<p>ServerResponse.FailureMessage: ' + data.LatestResult.ServerResponse.FailureMessage + '</p>' +
+									'<hr/>';
+					}
+
+				}	
+							
+ 				//txtMessage.innerHTML = message;
+ 				
+ 			}
+
+		</script>
+
+	</body>
+</html>
