@@ -1,4 +1,4 @@
-where-is-my-developer
+Where I am ?
 =====================
-
-Cordova Plugin to see where is your develop
+Thales Valentim 2014
+Project to send positions and watch in browser!
