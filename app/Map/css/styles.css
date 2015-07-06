@@ -1,0 +1,31 @@
+html, body { height:100%; width:100%; margin:0;}
+
+#map-canvas {
+	min-height:400px;
+	min-width:300px;
+	/*width:100%;*/
+}
+#map-canvas img{
+  max-width: none;
+}
+
+h3{
+margin-top: 8px;
+height: 11px;
+}
+
+#foto{
+position: absolute;
+margin-top: -43px;
+margin-left: 93px;
+}
+
+#latlng{
+margin-top:20px;
+font-size: 10px;
+}
+
+.gm-style-iw {
+width: 170px; 
+min-height: 115px;
+}
